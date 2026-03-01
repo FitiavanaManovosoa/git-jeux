@@ -55,7 +55,7 @@ class InterfaceDAccueil1:
         self.root.bind("<Key>", self.gerer_clavier)
         self.root.bind("<Configure>", self.redimensionner_auto)
 
-        self.lancer_musique_fond("assets/background.mp3")
+        self.lancer_musique_fond("audios/background.mp3")
     def lancer_musique_fond(self, fichier_mp3):
         try:
             # On ouvre le fichier avec un alias pour le contrôler plus tard
@@ -69,9 +69,9 @@ class InterfaceDAccueil1:
     def jouer_effet(self, type_effet):
         """ Joue un son .wav de façon asynchrone (ne bloque pas le jeu) """
         fichiers = {
-            "ok": "assets/lettre_ok.wav",
-            "erreur": "assets/erreur.wav",
-            "victoire": "assets/victoire.wav"
+            "ok": "audios/lettre_ok.wav",
+            "erreur": "audios/erreur.wav",
+            "victoire": "audios/victoire.wav"
         }
         try:
             # SND_ASYNC permet de continuer à jouer pendant que le son retentit

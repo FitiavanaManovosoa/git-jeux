@@ -17,6 +17,7 @@ class ApplicationComplete:
         self.root.resizable(True, True) 
         
         self.dossier = os.path.dirname(os.path.abspath(__file__))
+        #self.dossier += "\\sprites"
         self.ecran_actuel = "chargement"
         
         self.lancer_musique_fond()
@@ -41,7 +42,7 @@ class ApplicationComplete:
         self.ecran_chargement()
 
     def lancer_musique_fond(self):
-        chemin_bg = os.path.join(self.dossier, "assets", "background.mp3")
+        chemin_bg = os.path.join(self.dossier, "audios", "background.mp3")
         if os.path.exists(chemin_bg):
             try:
                 ctypes.windll.winmm.mciSendStringW(f'open "{chemin_bg}" alias bg_music', None, 0, None)
@@ -50,7 +51,7 @@ class ApplicationComplete:
                 pass
 
     def jouer_clic(self):
-        chemin_clic = os.path.join(self.dossier, "assets", "click.wav")
+        chemin_clic = os.path.join(self.dossier, "audios", "click.wav")
         if os.path.exists(chemin_clic):
             winsound.PlaySound(chemin_clic, winsound.SND_FILENAME | winsound.SND_ASYNC)
 
@@ -67,7 +68,7 @@ class ApplicationComplete:
         self.canvas.pack(fill="both", expand=True)
 
         try:
-            self.bg_raw = Image.open(os.path.join(self.dossier, "bg.png"))
+            self.bg_raw = Image.open(os.path.join(self.dossier, "sprites", "bg.png"))
             self.bg_tk = ImageTk.PhotoImage(self.bg_raw)
             self.canvas.create_image(0, 0, anchor="nw", image=self.bg_tk, tags="fond")
         except:
@@ -77,7 +78,7 @@ class ApplicationComplete:
         self.frames = []
         for i in range(1, 7):
             try:
-                img_path = os.path.join(self.dossier, f"l{i}.png")
+                img_path = os.path.join(self.dossier, "sprites", f"l{i}.png")
                 img = Image.open(img_path).convert("RGBA").resize((100, 100))
                 self.frames.append(ImageTk.PhotoImage(img))
             except Exception as e:

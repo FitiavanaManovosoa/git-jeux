@@ -9,6 +9,7 @@ class InterfaceDesign:
         self.root.geometry("1024x768")
 
         dossier_actuel = os.path.dirname(os.path.abspath(__file__))
+        dossier_actuel += "\\sprites"
 
         # --- 1. CHARGEMENT FOND ET SPRITES ---
         self.bg_photo = None
